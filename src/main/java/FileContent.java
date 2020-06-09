@@ -43,9 +43,9 @@ public class FileContent  implements IterableText{
     }
 
     private void createFileWordsList(String nextLine) {
-        String[] arrSplitLine = nextLine.split("\\s+");
+        String[] arrSplitLine = nextLine.trim().split("\\s+");
         for (String s : arrSplitLine) {
-            if(!s.equalsIgnoreCase("")){
+            if(!s.equalsIgnoreCase("\\s+")){
                 fileWords.add(s.toLowerCase());
             }
         }

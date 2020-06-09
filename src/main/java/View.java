@@ -25,4 +25,8 @@ public class View {
             System.out.print(String.format("[%s -> %.2f]", key.toUpperCase(), lettersPercentageQuantity.get(key)));
         }
     }
+
+    public void printText(String text){
+        System.out.println(text);
+    }
 }

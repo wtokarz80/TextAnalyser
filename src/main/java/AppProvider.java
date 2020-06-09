@@ -12,7 +12,7 @@ public class AppProvider {
     }
 
     public void startProgram(){
-        System.out.println("Enter the names of the text files separated by a comma: ");
+        view.printText("Enter the names of the text files separated by space: ");
         String userInput = scan.next();
         String[] filesName = userInput.split("\\s+");
         for (String fileName : filesName){
