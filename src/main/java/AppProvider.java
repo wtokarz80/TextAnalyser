@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -5,17 +6,19 @@ public class AppProvider {
 
     private Scanner scan = new Scanner(System.in);
     private View view = new View();
+    private String[] args;
 
-    AppProvider(){
+    AppProvider(String[] args){
+        this.args = args;
         scan.useDelimiter(System.lineSeparator());
-        startProgram();
     }
 
-    public void startProgram(){
-        view.printText("Enter the names of the text files separated by space: ");
-        String userInput = scan.next();
-        String[] filesName = userInput.split("\\s+");
-        for (String fileName : filesName){
+    public void startProgram() throws FileNotFoundException {
+//        view.printText("Enter the names of the text files separated by space: ");
+//        String userInput = scan.next();
+//        String[] filesName = userInput.split("\\s+");
+
+        for (String fileName : args){
             FileContent fileContent = new FileContent(fileName);
             StatisticalAnalysis statAnalysisWords = new StatisticalAnalysis(fileContent.wordIterator());
             StatisticalAnalysis statAnalysisChars = new StatisticalAnalysis(fileContent.charIterator());

@@ -34,7 +34,8 @@ public class StatisticalAnalysis {
                 count += 1;
             }
         }
-        return (100 * count) / dataSize();
+        float result = (100 * count) / dataSize();
+        return (float) (Math.round(result * 100.00) / 100.00);
     }
 
     public int dataSize(){
@@ -50,7 +51,8 @@ public class StatisticalAnalysis {
     public float ratioAtoE(){
         int countA = countOf("a");
         int countB = countOf("e");
-        return (float) countA / (float) countB;
+        float result = (float) countA / (float) countB;
+        return (float) (Math.round(result * 100.00) / 100.00);
     }
 
 

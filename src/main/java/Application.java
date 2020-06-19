@@ -1,7 +1,12 @@
+import java.io.FileNotFoundException;
+
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] arg) throws FileNotFoundException {
 
-        AppProvider appProvider = new AppProvider();
+        String[] args = {"test.txt"};
+        AppProvider appProvider = new AppProvider(args);
+        appProvider.startProgram();
+
     }
 }

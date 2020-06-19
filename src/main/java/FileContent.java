@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,14 +14,14 @@ public class FileContent  implements IterableText{
     private final Iterator<String> wordIter;
     private final Iterator<String> charIter;
 
-    FileContent(String fileName){
+    FileContent(String fileName) throws FileNotFoundException {
         this.fileName = fileName;
         readContent();
         wordIter = wordIterator();
         charIter = charIterator();
     }
 
-    public void readContent(){
+    public void readContent() throws FileNotFoundException {
         try{
             var fileReader = new FileReader(fileName);
             var bufferedReader = new BufferedReader(fileReader);
@@ -31,7 +32,7 @@ public class FileContent  implements IterableText{
                 createFileCharsList(nextLine);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new FileNotFoundException("There is no such file");
         }
     }
 
@@ -45,7 +46,7 @@ public class FileContent  implements IterableText{
     private void createFileWordsList(String nextLine) {
         String[] arrSplitLine = nextLine.trim().split("\\s+");
         for (String s : arrSplitLine) {
-            if(!s.equalsIgnoreCase("\\s+")){
+            if(!s.equalsIgnoreCase("") ){
                 fileWords.add(s.toLowerCase());
             }
         }

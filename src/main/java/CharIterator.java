@@ -24,9 +24,6 @@ public class CharIterator implements Iterator<String> {
 
     @Override
     public String next() {
-        if (this.hasNext()){
-            return fileContent.getFileChars().get(index++);
-        }
-        return null;
+        return fileContent.getFileChars().get(index++);
     }
 }
